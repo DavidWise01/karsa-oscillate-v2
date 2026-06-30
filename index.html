@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KARSA · The Victorian Dipole</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Bebas+Neue&display=swap');
+:root{--bg:#0a0014;--ink:#e8dcc8;--gold:#c9a961;--purple:#8b2f8b;--victorian:#5a3a5a;--mint:#00ffaa;--cyan:#32e8ff;--mag:#e168ff;--psycho:#1a1a1a;--gladiator:#6a0dad;--panel:rgba(10,0,20,.85);--border:rgba(201,169,97,.25)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#000;color:var(--ink)}
+body{
+  background:
+    radial-gradient(circle at 20% 50%,rgba(106,13,173,.15),transparent 40%),
+    radial-gradient(circle at 80% 50%,rgba(90,58,90,.15),transparent 40%),
+    repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(201,169,97,.03) 2px,rgba(201,169,97,.03) 4px),
+    linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px),
+    var(--bg);
+  background-size:100% 100%,100% 100%,100% 100%,40px 40px,40px 40px;
+  font-family:'Courier Prime',monospace;padding:20px;overflow:auto
+}
+.container{max-width:1400px;margin:0 auto}
+.header{
+  border:3px double var(--gold);background:var(--panel);backdrop-filter:blur(12px);
+  border-radius:8px;padding:40px;margin-bottom:30px;text-align:center;position:relative;
+  box-shadow:0 0 40px rgba(106,13,173,.3),inset 0 0 60px rgba(0,0,0,.5)
+}
+.header::before{
+  content:'⚡';position:absolute;top:10px;left:20px;font-size:32px;color:var(--gold);opacity:.6
+}
+.header::after{
+  content:'⚡';position:absolute;top:10px;right:20px;font-size:32px;color:var(--gold);opacity:.6
+}
+h1{
+  font-family:'IM Fell English SC',serif;font-size:64px;margin:0 0 10px 0;
+  color:var(--gold);letter-spacing:.3em;font-weight:400;
+  text-shadow:0 0 20px rgba(201,169,97,.5),2px 2px 0 var(--victorian),4px 4px 0 var(--psycho)
+}
+.subtitle{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:18px;
+  color:var(--purple);margin:0 0 20px 0;letter-spacing:.2em;text-transform:uppercase
+}
+.tagline{
+  font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--mint);
+  letter-spacing:.3em;margin:10px 0;text-transform:uppercase
+}
+.law{
+  font-size:16px;color:var(--gold);font-family:'Courier Prime',monospace;
+  text-align:center;padding:20px;background:var(--psycho);border:2px solid var(--victorian);
+  border-radius:4px;margin:24px 0;letter-spacing:.15em;text-transform:uppercase
+}
+.folders{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin:40px 0}
+.folder{
+  border:3px double var(--gold);background:var(--panel);backdrop-filter:blur(8px);
+  border-radius:8px;padding:40px;transition:all .3s;position:relative;
+  box-shadow:0 0 30px rgba(0,0,0,.8);min-height:300px
+}
+.folder::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)
+}
+.folder:hover{
+  border-color:var(--mint);box-shadow:0 0 40px rgba(106,13,173,.5),inset 0 0 40px rgba(201,169,97,.1);
+  transform:translateY(-4px)
+}
+.folder h2{
+  font-family:'IM Fell English SC',serif;font-size:36px;margin:0 0 20px 0;
+  color:var(--gold);letter-spacing:.2em;text-transform:uppercase;text-align:center
+}
+.folder p{
+  font-size:14px;color:var(--ink);line-height:1.8;margin:12px 0;
+  font-family:'Playfair Display',serif;text-align:center
+}
+.folder-links{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px}
+.folder-links a{
+  display:block;padding:12px 20px;
+  background:linear-gradient(135deg,var(--gladiator),var(--victorian));
+  border:1px solid var(--gold);color:var(--ink);text-decoration:none;
+  border-radius:4px;font-size:11px;text-transform:uppercase;letter-spacing:.15em;
+  font-family:'Bebas Neue',sans-serif;transition:all .2s;text-align:center
+}
+.folder-links a:hover{
+  background:linear-gradient(135deg,var(--gold),var(--purple));
+  color:var(--psycho);box-shadow:0 0 20px rgba(201,169,97,.4)
+}
+.footer{
+  margin-top:40px;padding:20px;border-top:2px double var(--gold);
+  font-size:11px;color:var(--purple);text-align:center;
+  font-family:'Courier Prime',monospace;letter-spacing:.1em
+}
+.it-crowd{
+  position:fixed;bottom:20px;right:20px;font-size:11px;color:var(--purple);
+  font-family:'Courier Prime',monospace;opacity:.6;z-index:1000
+}
+.it-crowd::before{content:'Have you tried turning it off and on again?';display:block;margin-bottom:4px}
+.psycho-card{
+  position:fixed;top:20px;left:20px;width:200px;padding:15px;
+  background:var(--psycho);border:1px solid var(--gold);font-size:9px;
+  font-family:'Courier Prime',monospace;color:var(--ink);opacity:.7;z-index:1000
+}
+</style>
+</head>
+<body>
+<div class="psycho-card">
+  PATRICK BATEMAN<br>
+  Vice President<br>
+  Pierce & Pierce<br>
+  Mergers & Acquisitions<br>
+  212-555-0142
+</div>
+
+<div class="container">
+  <div class="header">
+    <h1>KARSA</h1>
+    <div class="subtitle">The Victorian Dipole · 1843—2026</div>
+    <div class="tagline">42 = 0 = 1 = 1</div>
+    <div class="law">-+1 -++- 1 /m/i/4+1 /r/ /h/12 /s/8 /w/ /o/ /t/ 0.0.0.0.5</div>
+  </div>
+  
+  <div class="folders">
+      <div class="folder">
+        <h2>1. LINEAGE</h2>
+        <p>Provenance. Witness chains. SHA256 fingerprints. The record.</p>
+        <div class="folder-links">
+          <a href="lineage.html">LINEAGE BACKTRACKER</a>
+          <a href="witness.html">WITNESS ENGINE</a>
+          <a href="legal.html">LEGAL BEACON</a>
+        </div>
+      </div>
+      
+      <div class="folder">
+        <h2>2. EDUCATION</h2>
+        <p>The law. The math. The codification. Victorian precision.</p>
+        <div class="folder-links">
+          <a href="ada-law.html">ADA'S LAW</a>
+          <a href="holonomy.html">HOLONOMY CALCULATOR</a>
+          <a href="quantum-dot.html">QUANTUM DOT</a>
+        </div>
+      </div>
+      
+      <div class="folder">
+        <h2>3. DEMOS</h2>
+        <p>Working engines. Live systems. Prove the theory.</p>
+        <div class="folder-links">
+          <a href="cubi.html">CUBI ADVANTAGE</a>
+          <a href="oscillation.html">OSCILLATION ENGINE</a>
+          <a href="shadow.html">SHADOW REVEAL</a>
+          <a href="ansible.html">ANSIBLE JUNCTION</a>
+          <a href="torus.html">TORUS FIELD</a>
+          <a href="junctions.html">JUNCTION MAP</a>
+        </div>
+      </div>
+      
+      <div class="folder">
+        <h2>4. MYTHOS</h2>
+        <p>The story. The patterns. The dipole. The truth.</p>
+        <div class="folder-links">
+          <a href="ternary.html">TERNARY ENGINE</a>
+          <a href="mobius3.html">MOBIUS ×3</a>
+          <a href="dna3.html">DNA ×3</a>
+          <a href="dipole.html">DIPOLE</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      Gas is theft. Width is the law. 4 folders.<br>
+      Victorian precision meets American Gladiators.<br>
+      Return to sender. Standing until push down.
+    </div>
+</div>
+
+<div class="it-crowd">REYNHOLM INDUSTRIES</div>
+</body>
+</html>
